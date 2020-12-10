@@ -32,12 +32,16 @@ resources = {
 
 
 def make_coffee():
-    coffee_options = input('What would you like? (espresso/latte/cappuccino): ')
+    coffee = input('What would you like? (espresso/latte/cappuccino): ')
 
-    for coffee_option in MENU:
-        if coffee_option == coffee_options:
-            print(MENU[coffee_option])
-            # return MENU[coffee]
+    if coffee == 'espresso':
+        return MENU['espresso']
+    elif coffee == 'latte':
+        # print(MENU['latte'])
+        return MENU['latte']
+    elif coffee == 'cappuccino':
+        # print(MENU['cappuccino'])
+        return MENU['cappuccino']
 
 
 def calculate_coins(coffee):
