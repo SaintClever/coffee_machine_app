@@ -25,16 +25,16 @@ MENU = {
 }
 
 resources = {
-    "water": 300,
+    "water": 50,
     "milk": 200,
     "coffee": 100
 }
 
 coffee_machine_on = True
 
+
 while coffee_machine_on:
     coffee_options = input('What would you like? (espresso/latte/cappuccino): ').lower()
-
 
     def calculate_coins():
         coffee = MENU[coffee_options]
@@ -63,7 +63,12 @@ while coffee_machine_on:
             resources[key] = resources[key] - value
             if resources[key] <= 0:
                 print(f'Sorry there is not enough {key}.')
-                return None # Exit function
+                refill_resources = input(f'Do you want to refill the {key}? y/n: ').lower()
+                if refill_resources == 'y':
+                    resources[key] = 1000 - value
+                else:
+                    print('Coffee machine out off service...\n')
+                    exit()
         return resources
 
 
@@ -80,3 +85,4 @@ while coffee_machine_on:
         report()
     elif coffee_options == 'off':  # end loop
         coffee_machine_on = False
+    
