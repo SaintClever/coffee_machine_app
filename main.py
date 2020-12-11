@@ -30,6 +30,7 @@ resources = {
     "coffee": 1100
 }
 
+import os
 coffee_machine_on = True
 profit = 0
 
@@ -92,3 +93,5 @@ while coffee_machine_on:
         report()
     elif coffee_options == 'off':  # end loop
         coffee_machine_on = False
+    elif coffee_options == 'clear':
+        os.system('cls||clear')
