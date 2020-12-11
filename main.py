@@ -80,7 +80,8 @@ while coffee_machine_on:
     def report():
         """ Prints report of ingredients and profit """
         for key, value in resources.items():
-            print(f'{key}: {value}')
+            print(f'{key}: {value}','g' if key == 'coffee' else 'ml')
+            # ternary operator: 'g' if key == 'coffee' else 'ml'
         print('Money: ${:.2f}\n'.format(profit))
 
 
