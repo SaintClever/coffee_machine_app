@@ -37,7 +37,7 @@ while coffee_machine_on:
     coffee_options = input('What would you like? (espresso/latte/cappuccino): ').lower()
     
     def calculate_coins():
-        ''' calculates profits, roduces coffee, and refunds money '''
+        """ calculates profits, produces coffee, and refunds money """
         global profit
         coffee = MENU[coffee_options]
         print('Please insert coins.')
@@ -60,7 +60,7 @@ while coffee_machine_on:
 
 
     def update_resources():
-        ''' tracks and updates coffee ingredients '''
+        """ tracks and updates coffee ingredients """
         coffee = MENU[coffee_options]
         ingredients = coffee['ingredients']
         for key, value in ingredients.items():
@@ -78,7 +78,7 @@ while coffee_machine_on:
 
 
     def report():
-        ''' Prints report of ingredients and profit '''
+        """ Prints report of ingredients and profit """
         for key, value in resources.items():
             print(f'{key}: {value}')
         print('Money: ${:.2f}\n'.format(profit))
