@@ -31,13 +31,19 @@ resources = {
 }
 
 
-def make_coffee():
-    coffee_options = input('What would you like? (espresso/latte/cappuccino): ')
 
-    for coffee_option in MENU:
-        if coffee_option == coffee_options:
-            print(MENU[coffee_option])
-            # return MENU[coffee]
+coffee_options = input('What would you like? (espresso/latte/cappuccino): ').lower()
+
+
+def make_coffee():
+    # for coffee_option in MENU:
+    #     if coffee_option == coffee_options:
+    #         print(MENU[coffee_option])
+    #         return MENU[coffee]
+
+    if coffee_options in MENU or coffee_options != 'off':
+        # print(MENU[coffee_options])
+        return MENU[coffee_options]
 
 
 def calculate_coins(coffee):
@@ -51,27 +57,25 @@ def calculate_coins(coffee):
     refund = total - coffee['cost']
     format_refund = '${:.2f}'.format(refund)
 
-    # print(MENU[coffee])
-
     if refund >= 0:
         print(f'Here is {format_refund} in change.')
-        if coffee['cost'] == 1.5:
-            print(f'Here is your espresso ☕️. Enjoy!')
-        elif coffee['cost'] == 2.5:
-            print(f'Here is your latte ☕️. Enjoy!')
-        elif coffee['cost'] == 3.0:
-            print(f'Here is your cappuccino ☕️. Enjoy!')
+        print(f'Here is your {coffee_options} ☕️. Enjoy!')
     else:
         print("Sorry that's not enough money. Money refunded.")
 
 
-def check_resources():
-    pass
+def update_resources(coffee):
+    ingredients = coffee['ingredients']
+    for key, value in ingredients.items():
+        # print(key, resources[key], value)
+        resources[key] = resources[key] - value
+    return resources
 
 
 def report():
-    pass
+    print(resources)
 
 
-coffee = make_coffee()
-calculate_coins(coffee)
+users_coffee = make_coffee()
+calculate_coins(users_coffee)
+update_resources(users_coffee)
